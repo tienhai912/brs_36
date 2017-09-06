@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :trackable, :validatable,
+    :omniauthable, omniauth_providers: %i(facebook google_oauth2)
+
   has_one :profile, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :reviews, dependent: :destroy
@@ -18,4 +22,8 @@ class User < ApplicationRecord
     foreign_key: :user_id, dependent: :destroy
   has_many :checked_requests, class_name: Request.name,
     foreign_key: :admin_id, dependent: :destroy
+
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :admin, presence: true
 end

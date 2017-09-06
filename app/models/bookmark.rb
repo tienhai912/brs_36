@@ -3,4 +3,7 @@ class Bookmark < ApplicationRecord
 
   belongs_to :user
   belongs_to :book
+
+  validates :favorite, presence: true
+  validates :status, presence: true
 end

@@ -4,4 +4,9 @@ class Request < ApplicationRecord
   belongs_to :user, class_name: User.name
   belongs_to :admin, class_name: User.name
   belongs_to :category
+
+  validates :title, presence: true
+  validates :publish_date, presence: true
+  validates :author, presence: true
+  validates :status, presence: true
 end
