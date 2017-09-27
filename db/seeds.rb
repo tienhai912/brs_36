@@ -14,6 +14,9 @@ User.create! name: "admin2", email: "admin2@123.com",
   password: "123123", admin: true
 User.create! name: "admin3", email: "admin3@123.com",
   password: "123123", admin: true
+User.create! name: "user", email: "user@123.com",
+  password: "123123"
+
 
 category_sample = ["Action", "Fiction", "Mystery", "Thriller", "Romance",
   "Horror", "Historical", "Adventure", "Comedy", "Poetry"]
@@ -40,7 +43,7 @@ end
   3.times do |m|
     user_id = n + 1
     book_id = m + 1
-    favorite = false
+    favorite = "not_favorite"
     status = "not_read"
     Bookmark.create! user_id: user_id, book_id: book_id, favorite: favorite,
       status: status
@@ -49,7 +52,7 @@ end
   3.times do |m|
     user_id = n + 1
     book_id = m * 2 + 1
-    favorite = false
+    favorite = "not_favorite"
     status = "reading"
     start_read = Faker::Time.between 2.days.ago, Date.today, :all
     Bookmark.create! user_id: user_id, book_id: book_id, favorite: favorite,
@@ -59,7 +62,7 @@ end
   3.times do |m|
     user_id = n + 1
     book_id = m * 3 +1
-    favorite = false
+    favorite = "not_favorite"
     status = "finish"
     start_read = Faker::Time.between 10.days.ago, 3.days.ago, :all
     finish_read = Faker::Time.between 2.days.ago, Date.today, :all
@@ -72,7 +75,7 @@ end
   3.times do |m|
     user_id = n + 1
     book_id = m * 4 + 1
-    favorite = true
+    favorite = "is_favorite"
     status = "finish"
     start_read = Faker::Time.between 10.days.ago, 3.days.ago, :all
     finish_read = Faker::Time.between 2.days.ago, Date.today, :all
@@ -86,7 +89,7 @@ end
   end
 end
 
-54.times do |n|
+55.times do |n|
   user_id = n + 1
   birthday = Faker::Time.between 60.years.ago, 20.years.ago, :all
   phone = Faker::Number.number 10

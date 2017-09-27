@@ -25,7 +25,6 @@ class User < ApplicationRecord
     foreign_key: :admin_id, dependent: :destroy
   has_many :posts, dependent: :destroy
 
-  validates :name, presence: true
   validates :email, presence: true, uniqueness: true
 
   class << self
